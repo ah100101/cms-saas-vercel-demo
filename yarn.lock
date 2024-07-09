@@ -3042,6 +3042,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/flags@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@vercel/flags@npm:2.6.0"
+  dependencies:
+    jose: "npm:5.2.1"
+  peerDependencies:
+    "@sveltejs/kit": "*"
+    next: "*"
+    react: "*"
+    react-dom: "*"
+  peerDependenciesMeta:
+    "@sveltejs/kit":
+      optional: true
+    next:
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10/31a70385d3f40dd4f922f2425d4f8fc3b22736282716503ee699739301e4f3c8706ac87b68707a2942399f56f3d6ceaa513edd1284ac6d144efc0bae89e5e72c
+  languageName: node
+  linkType: hard
+
 "@vercel/fun@npm:1.1.0":
   version: 1.1.0
   resolution: "@vercel/fun@npm:1.1.0"
@@ -6026,6 +6049,7 @@ __metadata:
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"
     "@types/uuid": "npm:^10.0.0"
+    "@vercel/flags": "npm:^2.6.0"
     "@vercel/speed-insights": "npm:^1.0.12"
     "@vercel/stega": "npm:^0.1.2"
     autoprefixer: "npm:10.4.19"
@@ -7248,6 +7272,13 @@ __metadata:
   bin:
     jiti: bin/jiti.js
   checksum: 10/005a0239e50381b5c9919f59dbab86128367bd64872f3376dbbde54b6523f41bd134bf22909e2a509e38fd87e1c22125ca255b9b6b53e7df0fedd23f737334cc
+  languageName: node
+  linkType: hard
+
+"jose@npm:5.2.1":
+  version: 5.2.1
+  resolution: "jose@npm:5.2.1"
+  checksum: 10/a3526af02f1ea713b48743aadb4198080c8eb3281d53907224e70021d8c02e69ae43e27ace4ef9a196fec8fa6fa22272e2a6aa035cba16adf631af36564a07d2
   languageName: node
   linkType: hard
 

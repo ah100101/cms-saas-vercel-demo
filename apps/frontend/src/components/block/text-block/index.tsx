@@ -1,11 +1,7 @@
-import type * as GraphQL from "@gql/graphql";
 import { gql } from "@gql/gql";
-import { CmsComponent } from "@remkoj/optimizely-cms-react";
+import { showNewTextBlock } from "@/flags";
 
-const TextBlock: CmsComponent<GraphQL.TextBlockDataFragment> = ({
-  data,
-  inEditMode,
-}) => {
+async function TextBlock({ data, inEditMode }) {
   const {
     className = "",
     center = false,
@@ -63,7 +59,34 @@ const TextBlock: CmsComponent<GraphQL.TextBlockDataFragment> = ({
       );
   }
 
-  return (
+  const showTextBlock = await showNewTextBlock();
+
+  return showTextBlock ? (
+    <section className={`${additionalClasses.join(" ")} flex`}>
+      <div className="prose max-w-none dark:text-ghost-white flex flex-col justify-start items-start">
+        {overline && (
+          <span
+            className="uppercase text-[12px] bg-vulcan text-white px-2 py-1 rounded-full inline-block"
+            data-epi-edit={inEditMode ? "TextBlockOverline" : undefined}
+            dangerouslySetInnerHTML={{ __html: overline }}
+          ></span>
+        )}
+        {heading && (
+          <h2
+            className="border-b-4 border-azure"
+            data-epi-edit={inEditMode ? "TextBlockHeading" : undefined}
+            dangerouslySetInnerHTML={{ __html: heading }}
+          ></h2>
+        )}
+        {description && description.html && (
+          <span
+            data-epi-edit={inEditMode ? "TextBlockDescription" : undefined}
+            dangerouslySetInnerHTML={{ __html: description.html }}
+          ></span>
+        )}
+      </div>
+    </section>
+  ) : (
     <section className={`${additionalClasses.join(" ")} flex`}>
       <div className="prose max-w-none dark:text-ghost-white">
         {overline && (
@@ -88,7 +111,7 @@ const TextBlock: CmsComponent<GraphQL.TextBlockDataFragment> = ({
       </div>
     </section>
   );
-};
+}
 
 TextBlock.displayName = "Text Block";
 TextBlock.getDataFragment = () => ["TextBlockData", TextBlockData];
