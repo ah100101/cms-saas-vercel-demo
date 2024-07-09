@@ -1,7 +1,7 @@
 import { gql } from "@gql/gql";
 import { showNewTextBlock } from "@/flags";
 
-async function TextBlock({ data, inEditMode }) {
+async function TextBlock({ data, inEditMode }: any) {
   const {
     className = "",
     center = false,
