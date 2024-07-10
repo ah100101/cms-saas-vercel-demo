@@ -1,5 +1,5 @@
 import { gql } from "@gql/gql";
-import { showNewTextBlock } from "@/flags";
+
 import {
   ContentLinkWithLocale,
   InlineContentLinkWithLocale,
@@ -79,34 +79,7 @@ async function TextBlock({ data, inEditMode }: TextBlockProps) {
       );
   }
 
-  const showNewTextBlockFlag = await showNewTextBlock();
-
-  return showNewTextBlockFlag ? (
-    <section className={`${additionalClasses.join(" ")} flex`}>
-      <div className="prose max-w-none dark:text-ghost-white flex flex-col justify-start items-start">
-        {overline && (
-          <span
-            className="uppercase text-[12px] bg-vulcan text-white px-2 py-1 rounded-full inline-block"
-            data-epi-edit={inEditMode ? "TextBlockOverline" : undefined}
-            dangerouslySetInnerHTML={{ __html: overline }}
-          ></span>
-        )}
-        {heading && (
-          <h2
-            className="border-b-4 border-azure"
-            data-epi-edit={inEditMode ? "TextBlockHeading" : undefined}
-            dangerouslySetInnerHTML={{ __html: heading }}
-          ></h2>
-        )}
-        {description && description.html && (
-          <span
-            data-epi-edit={inEditMode ? "TextBlockDescription" : undefined}
-            dangerouslySetInnerHTML={{ __html: description.html }}
-          ></span>
-        )}
-      </div>
-    </section>
-  ) : (
+  return (
     <section className={`${additionalClasses.join(" ")} flex`}>
       <div className="prose max-w-none dark:text-ghost-white">
         {overline && (
