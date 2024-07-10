@@ -1,7 +1,27 @@
 import { gql } from "@gql/gql";
 import { showNewTextBlock } from "@/flags";
+import {
+  ContentLinkWithLocale,
+  InlineContentLinkWithLocale,
+} from "@remkoj/optimizely-graph-client";
 
-async function TextBlock({ data, inEditMode }: any) {
+type TextBlockProps = {
+  data: {
+    center: boolean;
+    headingSize: string;
+    overline: string;
+    heading: string;
+    width?: string;
+    className?: string;
+    description?: {
+      html: string;
+    };
+  };
+  contentLink: ContentLinkWithLocale | InlineContentLinkWithLocale;
+  inEditMode?: boolean;
+};
+
+async function TextBlock({ data, inEditMode }: TextBlockProps) {
   const {
     className = "",
     center = false,
@@ -59,9 +79,9 @@ async function TextBlock({ data, inEditMode }: any) {
       );
   }
 
-  const showTextBlock = await showNewTextBlock();
+  const showNewTextBlockFlag = await showNewTextBlock();
 
-  return showTextBlock ? (
+  return showNewTextBlockFlag ? (
     <section className={`${additionalClasses.join(" ")} flex`}>
       <div className="prose max-w-none dark:text-ghost-white flex flex-col justify-start items-start">
         {overline && (
