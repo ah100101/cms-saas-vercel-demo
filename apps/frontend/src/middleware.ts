@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
       !pathname.toLowerCase().startsWith(`/${slug.toLowerCase()}/`) &&
       pathname !== `/${slug.toLowerCase()}`
   );
-  if (pathnameIsMissingLocale && pathname !== "/preview") {
+  if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
     const slug = locale;
     if (DEBUG)
